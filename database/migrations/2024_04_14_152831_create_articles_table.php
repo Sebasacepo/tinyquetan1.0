@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('contenido', 4000);
             $table->timestamps();
 
+
         });
     }
 

@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('title', 120);
             $table->string('contenido', 4000);
             $table->timestamps();
-
-
         });
     }
 

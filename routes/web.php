@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Usuarios
-Route::post('/users','UserController@create');
+Route::resource('/users', UserController::class);
 
 Route::get('\user\{id}',[UserController::class, 'show']);
 

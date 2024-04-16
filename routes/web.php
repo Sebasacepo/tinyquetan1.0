@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('home/home');
+});
+
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('article.index');
 

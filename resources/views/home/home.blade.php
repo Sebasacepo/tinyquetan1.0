@@ -8,8 +8,7 @@
 
 </head>
 <header>
-
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TinyQueTan</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +16,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home">Inicio</a>
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home">inicio</a>
         <a class="nav-link" href="http://127.0.0.1:8000/articles">Articulo</a>
       </div>
     </div>
@@ -25,39 +24,27 @@
 </nav>
 </header>
 <body>
-@extends('layouts.app')
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://cdn.pixabay.com/photo/2017/07/26/19/07/water-glass-2542790_1280.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://cdn.pixabay.com/photo/2017/01/05/18/02/planets-1956031_1280.jpg" class="d-block w-100" alt="...">
+    </div>  
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-@section('content')
-
-<h1>Nuevo Artículo</h1>
-
-    <form action="{{ route('article.store') }}"  method="POST">
-        @csrf
-
-        <div class="mb-3">
-            <label  class="form-label">Título</label>
-            <input type="text" class="form-control" name="title" />
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Contenido</label>
-            <input type="text" class="form-control" name="content" />
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Fecha</label>
-            <input type="date" class="form-control" name="date" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
-    </form>
-
-@endsection
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
-

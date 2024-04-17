@@ -11,6 +11,10 @@ Route::resource('/users', UserController::class);
 
 Route::get('\user\{id}',[UserController::class, 'show']);
 
+Route::get('/home', function () {
+    return view('home/home');
+});
+
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('article.index');
 

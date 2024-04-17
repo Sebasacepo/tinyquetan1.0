@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -6,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\Log;
+
 
 class ArticlesController extends Controller
 {
@@ -32,7 +34,7 @@ class ArticlesController extends Controller
 
             return redirect()->action([ArticlesController::class, 'index']);
         }catch(Exception $ex){
-            Logg::error($ex);
+            Log::error($ex);
         }
     }
 
@@ -62,7 +64,7 @@ class ArticlesController extends Controller
 
             return redirect()->action([ArticlesController::class, 'index']);
         }catch(Exception $ex){
-            Logg::error($ex);
+            Log::error($ex);
         }
     }
 

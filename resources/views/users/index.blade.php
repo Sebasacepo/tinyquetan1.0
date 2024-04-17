@@ -7,7 +7,7 @@
     <div class="container py-4">
         <h2>Listado de Usuarios</h2>
 
-        <a href="" class="btn btn-primary btn-sm" class="btn btn-primary btn-sm">Nuevo registro</a>
+        <a href="{{ url('users/create') }}" class="btn btn-primary btn-sm" class="btn btn-primary btn-sm">Nuevo registro</a>
 
         <table class="table table-hover">
             <thead>

@@ -17,7 +17,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <form action="{{ url('users/.$user->id') }}" method="post">
+        <form action="{{ url('users/'.$user->id) }}" method="post">
             @method("PUT")
             @csrf
 

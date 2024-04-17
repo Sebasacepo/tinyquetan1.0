@@ -22,16 +22,16 @@
     <form action="{{ route('article.update') }}"  method="POST">
         @csrf
         @method('PUT')
-        <input type="hidden" name = "article_id" value ="{{$article -> id}}">
+        <input type="hidden" name = "article_id" value ="{{$article -> id}}" required>
 
         <div class="mb-3">
             <label  class="form-label">Titulos</label>
-            <input type="text" class="form-control" name="title" value={{ $article -> title}}/>
+            <input type="text" class="form-control" name="title" value={{ $article -> title}} required/>
         </div>
 
         <div class="mb-3">
             <label  class="form-label">Contenidos</label>
-            <input type="text" class="form-control" name="content" value={{ $article -> content }} />
+            <input type="text" class="form-control" name="content" value={{ $article -> content }} required/>
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>

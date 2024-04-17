@@ -44,10 +44,6 @@
             <input type="text" class="form-control" name="content" />
         </div>
 
-        <div class="mb-3">
-            <label  class="form-label">Fecha</label>
-            <input type="date" class="form-control" name="date" />
-        </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>
         <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>

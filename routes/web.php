@@ -2,10 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('/users', UserController::class);
+
+Route::get('\user\{id}',[UserController::class, 'show']);
 
 Route::get('/home', function () {
     return view('home/home');

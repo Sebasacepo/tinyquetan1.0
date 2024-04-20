@@ -1,44 +1,30 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">TinyQueTan</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home">Inicio</a>
-        <a class="nav-link" href="http://127.0.0.1:8000/articles">Articulo</a>
-      </div>
-    </div>
-  </div>
-</nav>
 @extends('layouts.app')
 
 @section('content')
-    <h1>Articulos</h1>
+    <h1>Blogs</h1>
 
-    <a href="{{ route('article.create') }}" class="btn btn-primary">Nuevo articulo</a>
+    <a href="{{ route('blog.create') }}" class="btn btn-primary">Nuevo blog</a>
     <table class="table table-bordered mt-3">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Título</th>
-                <th>Contenido</th>
-                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
                 <th></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach ($articles as $article)
+            @foreach ($blogs as $blog)
                 <tr>
-                    <td>{{ $article->id }}</td>
-                    <td>{{ $article->title }}</td>
-                    <td>{{ $article->content }}</td>
-                    <td>{{ $article->date }}</td>
+                    <td>{{ $blog->id }}</td>
+                    <td>{{ $blog->titulo }}</td>
+                    <td>{{ $blog->describcion }}</td>
+                    <td>{{ $blog->category }}</td>
                     <td>
-                        <a href="{{ route('article.edit', $article->id )}}" class="btn btn-warning">Editar</a>
-                        <form action="{{ route('article.delete', $article->id )}}" style = "display.contents" method = "POST">
+                        <a href="{{ route('blog.edit', $blog->id )}}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('blog.delete', $blog->id )}}" style = "display.contents" method = "POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btnDelete"> Eliminar</button>
@@ -83,4 +69,3 @@
     </script>
 
 @endsection
-

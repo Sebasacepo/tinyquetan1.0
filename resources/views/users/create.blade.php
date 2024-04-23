@@ -66,7 +66,7 @@
                     </select>
                 </div>
             </div>
-            <a href="{{ url('users') }}" class="btn btn-secundary">Regresar</a>
+            <a href="{{ url('users') }}" class="btn btn-secundary">Cancelar</a>
 
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>

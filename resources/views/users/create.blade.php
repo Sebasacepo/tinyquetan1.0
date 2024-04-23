@@ -1,4 +1,4 @@
-@extends('layout/template')
+@include('layouts.app')
 
 @section('title', 'Registro de usuarios')
 

@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 
@@ -69,4 +68,5 @@
 
     </script>
 
+@include('layouts.foot')
 @endsection

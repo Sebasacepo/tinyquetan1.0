@@ -3,7 +3,7 @@
 
     @include('layouts.head')
 
-    <footer style="background-color: black; color:white">
+    <footer style="background-color: gray; color:white">
         <div class="min-h-screen bg-gray-100">            <!-- Page Heading -->
         <footer>
             <div class="container">
@@ -11,9 +11,9 @@
                 <div class="col-md-4">
                 <h5>Contáctanos</h5>
                 <ul class="list-unstyled">
-                    <li><strong>Correo electrónico:</strong> info@miempresa.com</li>
-                    <li><strong>Teléfono:</strong> +1234567890</li>
-                    <li><strong>Dirección:</strong> Calle Principal, Ciudad, País</li>
+                    <li><strong>Correo electrónico:</strong> ejemplo@hotmail.com</li>
+                    <li><strong>Teléfono:</strong> +534545453</li>
+                    <li><strong>Dirección:</strong> Medellin, Colombia</li>
                 </ul>
                 </div>
                 <div class="col-md-4">
@@ -26,9 +26,9 @@
                 <div class="col-md-4">
                 <h5>Síguenos</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="bi bi-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="bi bi-instagram"></i> Instagram</a></li>
                 </ul>
                 </div>
             </div>

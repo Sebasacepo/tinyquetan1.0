@@ -8,13 +8,24 @@ use App\Http\Controllers\BlogsController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/users', UserController::class);
-
-Route::get('\user\{id}',[UserController::class, 'show']);
-
 Route::get('/home', function () {
     return view('home/home');
 });
+
+Route::resource('/users', UserController::class)->middleware([
+    'create' => 'permission:create-users',
+    'store' => 'permission:create-users',
+    'edit' => 'permission:edit-users',
+    'update' => 'permisison:edit-users',
+    'delete' => 'permission:delete-users',
+    'index' => 'permission:view-users',
+    'show' =>'permission:view-users'
+
+]);
+
+Route::get('\user\{id}',[UserController::class, 'show'])->name('admin');
+
+
 
 
 //----------------------------------Articles--------------------------------------------------------

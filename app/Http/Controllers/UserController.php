@@ -7,7 +7,6 @@ use App\Models\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-use function PHPUnit\Framework\returnSelf;
 
 class UserController extends Controller
 {

@@ -1,6 +1,7 @@
-@extends('layouts.app')
 
+@extends('layouts.app')
 @section('content')
+
     <h1>Blogs</h1>
 
     <a href="{{ route('blog.create') }}" class="btn btn-primary">Nuevo blog</a>

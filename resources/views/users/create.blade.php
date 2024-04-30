@@ -55,10 +55,11 @@
                     <input type="email" class="form-control" name="email_confirmation" id="email_confirmation" value="{{ old('email_confirmation') }}" required>
                 </div>
             </div>
+
             <div class="mb-3 row">
                 <label for="rol" class="col-sm-2 col-form-label">Asignar Rol</label>
                 <div class="col-sm-5">
-                    <select name="rol" id="rol" class="form-select" required>
+                    <select name="rol" id="rol" class="form-select">
                         <option value="">Seleccionar ROL</option>
                         @foreach ($roles as $rol )
                         <option value="{{ $rol->id }}">{{ $rol->name }}</option>
@@ -66,7 +67,7 @@
                     </select>
                 </div>
             </div>
-            <a href="{{ url('users') }}" class="btn btn-secundary">Regresar</a>
+            <a href="{{ url('users') }}" class="btn btn-secundary">Cancelar</a>
 
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>

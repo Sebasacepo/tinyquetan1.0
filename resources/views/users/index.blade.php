@@ -1,7 +1,5 @@
-@extends('layout/template')
-
+@include('layouts.app')
 @section('title', 'Registro de usuarios')
-
 @section('contenido')
 <main>
     <div class="container py-4">
@@ -43,3 +41,4 @@
         </table>
     </div>
 </main>
+@include('layouts.foot')

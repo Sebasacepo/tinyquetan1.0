@@ -25,6 +25,10 @@
 </nav>
 </header>
 <body>
+
+@include('layouts.app')
+@section('content')
+
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">

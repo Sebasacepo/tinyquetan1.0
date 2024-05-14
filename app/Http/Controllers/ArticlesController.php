@@ -29,6 +29,7 @@ class ArticlesController extends Controller
             $article->title = $request->title;
             $article->content = $request->content;
             $article->date = now();
+            $article->blog_id = $request->blog_id;
 
             $article->save();
 
@@ -59,6 +60,7 @@ class ArticlesController extends Controller
 
             $article->title = $request->title;
             $article->content = $request->content;
+            $article->blog_id = $request->blog_id;
 
             $article->save();
 

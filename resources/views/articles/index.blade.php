@@ -12,6 +12,7 @@
                 <th>Título</th>
                 <th>Contenido</th>
                 <th>Fecha</th>
+                <th>Blog</th>
                 <th></th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                     <td>{{ $article->title }}</td>
                     <td>{{ $article->content }}</td>
                     <td>{{ $article->date }}</td>
+                    <td>{{ $article->blog_id }}</td>
                     <td>
                         <a href="{{ route('article.edit', $article->id )}}" class="btn btn-warning">Editar</a>
                         <form action="{{ route('article.delete', $article->id )}}" style = "display.contents" method = "POST">
@@ -65,9 +67,9 @@
                         }
                     });
             });
-            
+
         });
-        
+
     </script>
     @include('layouts.foot')
 @endsection

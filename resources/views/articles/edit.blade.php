@@ -34,6 +34,11 @@
             <input type="text" class="form-control" name="content" value={{ $article -> content }} required/>
         </div>
 
+        <div class="mb-3">
+            <label  class="form-label">Blog</label>
+            <input type="text" class="form-control" name="blog_id" value={{ $article -> blog_id }} required/>
+        </div>
+
         <button type="submit" class="btn btn-primary">Guardar</button>
 
     </form>

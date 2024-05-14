@@ -27,6 +27,11 @@
             <input type="text" class="form-control" name="content" />
         </div>
 
+        <div class="mb-3">
+            <label  class="form-label">Blog</label>
+            <input type="text" class="form-control" name="blog_id" />
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Guardar</button>
         <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>

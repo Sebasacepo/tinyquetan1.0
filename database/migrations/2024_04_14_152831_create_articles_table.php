@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('title', 50);
             $table->string('content', 3000);
             $table->date('date');//Prueba
+            $table->unsignedBigInteger('blog_id');
+
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
         });
     }
 

@@ -19,6 +19,7 @@
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/articles">Articulo</a>
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/users">Usuarios</a>
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/blogs">Blogs</a>
+                            <a class="nav-link text-white" href="http://127.0.0.1:8000/comments">Comentarios</a>
                         </div>
                         </div>
                     </div>

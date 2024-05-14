@@ -19,7 +19,11 @@
 
         <div class="mb-3">
             <label  class="form-label">Articulo</label>
-            <input type="text" class="form-control" name="article_id" />
+            <select class="form-control" name ="article_id">
+                @foreach ($articles as $article)
+                    <option value = "{{$article->id}}">{{$article->title}}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">

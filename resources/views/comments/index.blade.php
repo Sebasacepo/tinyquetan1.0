@@ -19,7 +19,7 @@
             @foreach ($comments as $comment)
                 <tr>
                     <td>{{ $comment->id }}</td>
-                    <td>{{ $comment->article_id }}</td>
+                    <td>{{ $comment->article->title}}</td>
                     <td>{{ $comment->content }}</td>
                     <td>{{ $comment->date }}</td>
                     <td>

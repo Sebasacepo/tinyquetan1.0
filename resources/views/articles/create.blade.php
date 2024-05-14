@@ -29,7 +29,11 @@
 
         <div class="mb-3">
             <label  class="form-label">Blog</label>
-            <input type="text" class="form-control" name="blog_id" />
+            <select class="form-control" name ="blog_id">
+                @foreach ($blogs as $blog)
+                    <option value = "{{$blog->id}}">{{$blog->titulo}}</option>
+                @endforeach
+            </select>
         </div>
 
 

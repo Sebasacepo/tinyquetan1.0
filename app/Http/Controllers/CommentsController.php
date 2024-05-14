@@ -5,19 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comments;
+use App\Models\Article;
 
 class CommentsController extends Controller
 {
     public function index()
     {
 
-        $comment = Comments::all();
+        $comment = Comments::with('article')->get();
 
         return view('comments.index', ['comments'=>$comment]);
     }
 
     public function create(){
-        return view('comments.create');
+        $articles = Article::all();
+        return view('comments.create', ['articles'=>$articles]);
     }
 
     public function store(Request $request ){
@@ -38,11 +40,12 @@ class CommentsController extends Controller
     public function edit($id){
 
         $comment = Comments::find($id);
+        $articles = Article::all();
 
         if(empty($comment)){
             abort(404, "El comentario con id '$id' no existe");
         }
-        return view('comments.edit', ['comment' => $comment]);
+        return view('comments.edit', ['comment' => $comment, 'articles'=>$articles]);
     }
 
 

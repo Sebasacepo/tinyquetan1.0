@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
@@ -14,13 +15,14 @@ class ArticlesController extends Controller
     public function index()
     {
 
-        $articles = Article::all();
+        $articles = Article::with('blog')->get();
 
         return view('articles.index', ['articles'=>$articles]);
     }
 
     public function create(){
-        return view('articles.create');
+        $blogs = Blog::all();
+        return view('articles.create', ['blogs'=>$blogs]);
     }
 
     public function store(Request $request ){
@@ -41,12 +43,13 @@ class ArticlesController extends Controller
 
     public function edit($id){
 
+        $blogs = Blog::all();
         $article = Article::find($id);
 
         if(empty($article)){
             abort(404, "El articulo con id '$id' no existe");
         }
-        return view('articles.edit', ['article' => $article]);
+        return view('articles.edit', ['article' => $article , 'blogs'=> $blogs]);
     }
 
 

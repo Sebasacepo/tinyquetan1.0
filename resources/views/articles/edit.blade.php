@@ -36,7 +36,11 @@
 
         <div class="mb-3">
             <label  class="form-label">Blog</label>
-            <input type="text" class="form-control" name="blog_id" value={{ $article -> blog_id }} required/>
+            <select class="form-control" name ="blog_id">
+                @foreach ($blogs as $blog)
+                    <option value = "{{$blog->titulo}}" {{$blog->id == $article->blog_id ? 'selected' : ' '}}>{{$blog->titulo}}</option>
+                @endforeach
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>

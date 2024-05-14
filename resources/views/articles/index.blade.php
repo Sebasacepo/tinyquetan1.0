@@ -24,7 +24,7 @@
                     <td>{{ $article->title }}</td>
                     <td>{{ $article->content }}</td>
                     <td>{{ $article->date }}</td>
-                    <td>{{ $article->blog_id }}</td>
+                    <td>{{ $article->blog->titulo }}</td>
                     <td>
                         <a href="{{ route('article.edit', $article->id )}}" class="btn btn-warning">Editar</a>
                         <form action="{{ route('article.delete', $article->id )}}" style = "display.contents" method = "POST">

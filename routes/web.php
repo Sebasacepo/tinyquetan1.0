@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\CommentsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,29 +20,12 @@ Route::get('/home', function () {
 
 //----------------------------------Articles--------------------------------------------------------
 
-
-Route::get('/articles', [ArticlesController::class, 'index'])->name('article.index');
-
-Route::get('/articles/create', [ArticlesController::class, 'create'])->name('article.create');
-
-Route::get('/articles/edit/{id}', [ArticlesController::class, 'edit'])->name('article.edit');
-
-Route::post('/articles/store', [ArticlesController::class, 'store'])->name('article.store');
-
-Route::put('/articles/update', [ArticlesController::class, 'update'])->name('article.update');
-
-Route::delete('/articles/delete/{id}', [ArticlesController::class, 'delete'])->name('article.delete');
+include('web/article.php');
 
 //------------------------Blogs-----------------------------------------------------------------------
 
-Route::get('/blogs', [BlogsController::class, 'index'])->name('blog.index');
+include('web/blog.php');
 
-Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blog.create');
+//--------------------------Comments-------------------------------------------------------------------
 
-Route::get('/blogs/edit/{id}', [BlogsController::class, 'edit'])->name('blog.edit');
-
-Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blog.store');
-
-Route::put('/blogs/update', [BlogsController::class, 'update'])->name('blog.update');
-
-Route::delete('/blogs/delete/{id}', [BlogsController::class, 'delete'])->name('blog.delete');
+include('web/comment.php');

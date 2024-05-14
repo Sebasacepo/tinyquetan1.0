@@ -4,7 +4,7 @@
     @include('layouts.head')
 
     <body class="font-sans antialiased">
-        
+
         <div class="min-h-screen bg-gray-100">            <!-- Page Heading -->
             <header class="bg-dark shadow">
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">

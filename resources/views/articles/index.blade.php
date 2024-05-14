@@ -34,6 +34,7 @@
                 </tr>
             @endforeach
         </tbody>
+
     </table>
 
     <script type="module">
@@ -64,10 +65,9 @@
                         }
                     });
             });
-
+            
         });
-
+        
     </script>
-
+    @include('layouts.foot')
 @endsection
-

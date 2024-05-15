@@ -12,12 +12,18 @@ use Illuminate\Support\Facades\Log;
 
 class ArticlesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if(!empty($request->records_per_page)){
+            $request -> records_per_page = $request -> records_per_page <= env('PAGINATION_MAX_SIZE') ? $request -> records_per_page : env('PAGINATION_MAX_SIZE');
+        }else{
+            $request -> records_per_page = env('PAGINATION_DEFAULT_SIZE');
+        }
 
-        $articles = Article::with('blog')->get();
+        $articles = Article::with('blog')->where('title','LIKE',"%$request->filter%")
+                                         ->paginate($request->records_per_page);
 
-        return view('articles.index', ['articles'=>$articles]);
+        return view('articles.index', ['articles'=>$articles, 'data'=>$request]);
     }
 
     public function create(){

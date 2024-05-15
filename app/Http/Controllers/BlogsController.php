@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if(!empty($request->records_per_page)){
+            $request -> records_per_page = $request -> records_per_page <= env('PAGINATION_MAX_SIZE') ? $request -> records_per_page : env('PAGINATION_MAX_SIZE');
+        }else{
+            $request -> records_per_page = env('PAGINATION_DEFAULT_SIZE');
+        }
 
-        $blogs = Blog::all();
+        $blogs = Blog::where('titulo','LIKE',"%$request->filter%")->paginate($request->records_per_page);;
 
-        return view('blogs.index', ['blogs'=>$blogs]);
+        return view('blogs.index', ['blogs'=>$blogs, 'data'=>$request]);
     }
 
     public function create(){

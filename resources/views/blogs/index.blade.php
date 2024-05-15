@@ -4,6 +4,36 @@
     <h1>Blogs</h1>
 
     <a href="{{ route('blog.create') }}" class="btn btn-primary">Nuevo blog</a>
+
+    <form class="navbar-search" method="GET" action ="{{ route('blog.index') }}">
+        <div class="row mt-3">
+            <div class = "col-md-auto">
+                <select class="form-select bg-ligth bolder-0 small" value="{{$data->records_per_page}}" name="records_per_page">
+                    <option {{$data->records_per_page == 2 ? 'selected' : ''}} value = "2">2</option>
+                    <option {{$data->records_per_page == 5 ? 'selected' : ''}} value = "5">5</option>
+                    <option {{$data->records_per_page == 10 ? 'selected' : ''}} value = "10">10</option>
+                    <option {{$data->records_per_page == 20 ? 'selected' : ''}} value = "20">20</option>
+                    <option {{$data->records_per_page == 50 ? 'selected' : ''}} value = "50">50</option>
+                </select>
+            </div>
+
+            <div class = "col-md-11">
+                <div class ="input-group-mb-3">
+                    <input type = "text"
+                           class = "form-control bg-light bolder-0 small"
+                           placeholder="Buscar..."
+                           aria-label="Search"
+                           name="filter"
+                           value="{{$data->filter}}"/>
+
+                    <div class ="input-group-append">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <table class="table table-bordered mt-3">
         <thead>
             <tr>
@@ -34,6 +64,8 @@
             @endforeach
         </tbody>
     </table>
+
+    {{ $blogs->appends($data->except('page'))->links('vendor.pagination.bootstrap-4') }}
 
     <script type="module">
 

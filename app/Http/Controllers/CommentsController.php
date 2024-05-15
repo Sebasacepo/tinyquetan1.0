@@ -9,12 +9,19 @@ use App\Models\Article;
 
 class CommentsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if(!empty($request->records_per_page)){
+            $request -> records_per_page = $request -> records_per_page <= env('PAGINATION_MAX_SIZE') ? $request -> records_per_page : env('PAGINATION_MAX_SIZE');
+        }else{
+            $request -> records_per_page = env('PAGINATION_DEFAULT_SIZE');
+        }
 
-        $comment = Comments::with('article')->get();
+        $comment = Comments::with('article')->join('articles', 'comments.article_id', '=', 'articles.id')
+                                            ->where('articles.title','LIKE',"%$request->filter%")
+                                            ->paginate($request->records_per_page);
 
-        return view('comments.index', ['comments'=>$comment]);
+        return view('comments.index', ['comments'=>$comment, 'data' => $request]);
     }
 
     public function create(){

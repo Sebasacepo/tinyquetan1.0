@@ -22,23 +22,23 @@
     <form action="{{ route('article.update') }}"  method="POST">
         @csrf
         @method('PUT')
-        <input type="hidden" name = "article_id" value ="{{$article -> id}}" required>
+        <input type="hidden" name = "article_id" value ="{{$article->id}}" required>
 
         <div class="mb-3">
             <label  class="form-label">Titulos</label>
-            <input type="text" class="form-control" name="title" value={{ $article -> title}} required/>
+            <input type="text" class="form-control" name="title" value={{ $article->title}} required/>
         </div>
 
         <div class="mb-3">
             <label  class="form-label">Contenidos</label>
-            <input type="text" class="form-control" name="content" value={{ $article -> content }} required/>
+            <input type="text" class="form-control" name="content" value={{ $article->content }} required/>
         </div>
 
         <div class="mb-3">
             <label  class="form-label">Blog</label>
             <select class="form-control" name ="blog_id">
                 @foreach ($blogs as $blog)
-                    <option value = "{{$blog->titulo}}" {{$blog->id == $article->blog_id ? 'selected' : ' '}}>{{$blog->titulo}}</option>
+                    <option value = "{{$blog->id}}" {{$blog->id == $article->blog_id ? 'selected' : ' '}}>{{$blog->titulo}}</option>
                 @endforeach
             </select>
         </div>

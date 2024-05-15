@@ -38,8 +38,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Articulo</th>
                 <th>Contenido</th>
+                <th>Articulo</th>
                 <th>Fecha</th>
                 <th></th>
             </tr>
@@ -49,8 +49,8 @@
             @foreach ($comments as $comment)
                 <tr>
                     <td>{{ $comment->id }}</td>
-                    <td>{{ $comment->article->title}}</td>
-                    <td>{{ $comment->content }}</td>
+                    <td>{{ $comment->comment_content }}</td>
+                    <td>{{ $comment->article->title }}</td>
                     <td>{{ $comment->date }}</td>
                     <td>
                         <a href="{{ route('comment.edit', $comment->id )}}" class="btn btn-warning">Editar</a>
@@ -67,6 +67,7 @@
     </table>
 
     {{ $comments->appends($data->except('page'))->links('vendor.pagination.bootstrap-4') }}
+
 
     <script type="module">
 

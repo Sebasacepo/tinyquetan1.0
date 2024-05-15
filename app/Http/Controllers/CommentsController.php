@@ -17,11 +17,11 @@ class CommentsController extends Controller
             $request -> records_per_page = env('PAGINATION_DEFAULT_SIZE');
         }
 
-        $comment = Comments::with('article')->join('articles', 'comments.article_id', '=', 'articles.id')
-                                            ->where('articles.title','LIKE',"%$request->filter%")
+        $comment = Comments::with('article')
+                                            ->where('comment_content','LIKE',"%$request->filter%")
                                             ->paginate($request->records_per_page);
 
-        return view('comments.index', ['comments'=>$comment, 'data' => $request]);
+        return view('comments.index', ['comments'=>$comment, 'data'=>$request]);
     }
 
     public function create(){
@@ -33,7 +33,7 @@ class CommentsController extends Controller
         try{
             $comment = new Comments();
             $comment->article_id = $request->article_id;
-            $comment->content = $request->content;
+            $comment->comment_content = $request->comment_content;
             $comment->date = now();
 
             $comment->save();
@@ -44,8 +44,8 @@ class CommentsController extends Controller
         }
     }
 
-    public function edit($id){
 
+    public function edit($id){
         $comment = Comments::find($id);
         $articles = Article::all();
 
@@ -54,7 +54,6 @@ class CommentsController extends Controller
         }
         return view('comments.edit', ['comment' => $comment, 'articles'=>$articles]);
     }
-
 
     public function update(Request $request ){
         try{
@@ -65,7 +64,7 @@ class CommentsController extends Controller
             }
 
             $comment->article_id = $request->article_id;
-            $comment->content = $request->content;
+            $comment->comment_content = $request->comment_content;
 
             $comment->save();
 

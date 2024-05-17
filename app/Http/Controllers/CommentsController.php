@@ -64,7 +64,7 @@ class CommentsController extends Controller
             }
 
             $comment->article_id = $request->article_id;
-            $comment->comment_content = $request->comment_content;
+            $comment->comment_content = $request->content;
 
             $comment->save();
 

@@ -4,7 +4,10 @@
 @section('content')
     <h1>Articulos</h1>
 
-    <a href="{{ route('article.create') }}" class="btn btn-primary">Nuevo articulo</a>
+    @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Contenidos.showContent'))
+        <a href="{{ route('article.create') }}" class="btn btn-primary">Nuevo articulo</a>
+    @endif
+
 
     <form class="navbar-search" method="GET" action ="{{ route('article.index') }}">
         <div class="row mt-3">
@@ -56,12 +59,19 @@
                     <td>{{ $article->date }}</td>
                     <td>{{ $article->blog->titulo }}</td>
                     <td>
-                        <a href="{{ route('article.edit', $article->id )}}" class="btn btn-warning">Editar</a>
-                        <form action="{{ route('article.delete', $article->id )}}" style = "display.contents" method = "POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btnDelete"> Eliminar</button>
-                        </form>
+                        @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Contenidos.updateContent'))
+                            <a href="{{ route('article.edit', $article->id )}}" class="btn btn-warning">Editar</a>
+                        @endif
+
+                        @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Contenidos.deleContent'))
+                            <form action="{{ route('article.delete', $article->id )}}" style = "display.contents" method = "POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btnDelete"> Eliminar</button>
+                            </form>
+                        @endif
+
+
                     </td>
                 </tr>
             @endforeach

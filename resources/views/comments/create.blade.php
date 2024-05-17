@@ -24,7 +24,8 @@
 
 
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+        <a class="btn btn-danger" href="{{route('comment.index')}}">Cancelar</a>
+
     </form>
 
 @endsection

@@ -6,8 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Middleware\AuthorizedMiddleware;
 
-Route::get('/articles', [ArticlesController::class, 'index'])->name('article.index')
-                                                             ->middleware(AuthorizedMiddleware::class. ':Contenidos.showContent');
+Route::get('/articles', [ArticlesController::class, 'index'])->name('article.index');
 
 Route::get('/articles/create', [ArticlesController::class, 'create'])->name('article.create')->middleware(AuthorizedMiddleware::class.':Contenidos.createContent');
 

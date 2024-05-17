@@ -26,6 +26,7 @@
 
 
         <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-danger" href="{{route('blog.index')}}">Cancelar</a>
 
     </form>
 

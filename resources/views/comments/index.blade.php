@@ -3,7 +3,12 @@
 @section('content')
     <h1>Comentarios</h1>
 
-    <a href="{{ route('comment.create') }}" class="btn btn-primary">Nuevo Comentario</a>
+    @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Comentarios.createComments'))
+        <a href="{{ route('comment.create') }}" class="btn btn-primary">Nuevo Comentario</a>
+    @endif
+
+
+
 
     <form class="navbar-search" method="GET" action ="{{ route('comment.index') }}">
         <div class="row mt-3">
@@ -53,12 +58,19 @@
                     <td>{{ $comment->article->title }}</td>
                     <td>{{ $comment->date }}</td>
                     <td>
+                    @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Comentarios.updateComments'))
                         <a href="{{ route('comment.edit', $comment->id )}}" class="btn btn-warning">Editar</a>
-                        <form action="{{ route('comment.delete', $comment->id )}}" style = "display.contents" method = "POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btnDelete"> Eliminar</button>
-                        </form>
+                    @endif
+
+                    @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Comentarios.deleComments'))
+                    <form action="{{ route('comment.delete', $comment->id )}}" style = "display.contents" method = "POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btnDelete"> Eliminar</button>
+                    </form>
+                    @endif
+
+
                     </td>
                 </tr>
             @endforeach

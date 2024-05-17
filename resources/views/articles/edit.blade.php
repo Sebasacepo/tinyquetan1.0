@@ -44,6 +44,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-danger" href="{{route('article.index')}}">Cancelar</a>
 
     </form>
 

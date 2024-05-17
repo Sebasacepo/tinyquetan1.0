@@ -27,9 +27,18 @@
             <input type="text" class="form-control" name="content" />
         </div>
 
+        <div class="mb-3">
+            <label  class="form-label">Blog</label>
+            <select class="form-control" name ="blog_id">
+                @foreach ($blogs as $blog)
+                    <option value = "{{$blog->id}}">{{$blog->titulo}}</option>
+                @endforeach
+            </select>
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+        <a class="btn btn-danger" href="{{route('article.index')}}">Cancelar</a>
     </form>
 
 @endsection

@@ -1,47 +1,29 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ArticlesController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\BlogsController;
+use App\Http\Middleware\AuthorizedMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/users', UserController::class);
 
-Route::get('\user\{id}',[UserController::class, 'show']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+include('web/article.php');
+include('web/blog.php');
+include('web/comment.php');
 
 Route::get('/home', function () {
     return view('home/home');
-});
-
-
-//----------------------------------Articles--------------------------------------------------------
-
-
-Route::get('/articles', [ArticlesController::class, 'index'])->name('article.index');
-
-Route::get('/articles/create', [ArticlesController::class, 'create'])->name('article.create');
-
-Route::get('/articles/edit/{id}', [ArticlesController::class, 'edit'])->name('article.edit');
-
-Route::post('/articles/store', [ArticlesController::class, 'store'])->name('article.store');
-
-Route::put('/articles/update', [ArticlesController::class, 'update'])->name('article.update');
-
-Route::delete('/articles/delete/{id}', [ArticlesController::class, 'delete'])->name('article.delete');
-
-//------------------------Blogs-----------------------------------------------------------------------
-
-Route::get('/blogs', [BlogsController::class, 'index'])->name('blog.index');
-
-Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blog.create');
-
-Route::get('/blogs/edit/{id}', [BlogsController::class, 'edit'])->name('blog.edit');
-
-Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blog.store');
-
-Route::put('/blogs/update', [BlogsController::class, 'update'])->name('blog.update');
-
-Route::delete('/blogs/delete/{id}', [BlogsController::class, 'delete'])->name('blog.delete');
+})->name('welcome');

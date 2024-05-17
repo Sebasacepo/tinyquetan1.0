@@ -13,11 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call(PermissionSeeder::class);
+        $this->call(UserRoleSeeder::class);
+        // $this->call(SectionSeeder::class); // Descomenta esta línea si deseas llamar al SectionSeeder
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
     }
 }

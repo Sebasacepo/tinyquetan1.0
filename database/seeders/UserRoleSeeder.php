@@ -22,6 +22,14 @@ class UserRoleSeeder extends Seeder
         $adminRole -> name ="Administrador";
         $adminRole -> save();
 
+        $allPermissions = Permission::all();
+        foreach ($allPermissions as $permission) {
+            $rolePermission = new RolePermission();
+            $rolePermission->role_id = $adminRole->id;
+            $rolePermission->permission_id = $permission->id;
+            $rolePermission->save();
+        }
+
         //Comments role
         $commentsPermission = Permission::where('module', '=', 'Comentarios')->get();
 

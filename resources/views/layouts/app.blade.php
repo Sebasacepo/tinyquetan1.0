@@ -15,14 +15,34 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
+
                             <a class="nav-link active text-white" aria-current="page" href="http://127.0.0.1:8000/home">inicio</a>
-                            <a class="nav-link text-white" href="http://127.0.0.1:8000/articles">Articulo</a>
+                            @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Contenidos.showContent'))
+                                <a class="nav-link text-white" href="http://127.0.0.1:8000/articles">Articulo</a>
+                                <a class="nav-link text-white" href="http://127.0.0.1:8000/blogs">Blogs</a>
+                            @endif
+
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/users">Usuarios</a>
-                            <a class="nav-link text-white" href="http://127.0.0.1:8000/blogs">Blogs</a>
+
+                            @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Comentarios.showComments'))
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/comments">Comentarios</a>
+                            @endif
+
                         </div>
                         </div>
+                        <div>
+                            <a href="{{route('login')}}">Ingresar</a>
+                            <form method="POST" action="{{route('logout')}}">
+                                @csrf
+                                <button>Cerrar sesión</button>
+                            </form>
+                        </div>
+
                     </div>
+                    </div>
+
+                    </div>
+
                 </nav>
             </header>
 

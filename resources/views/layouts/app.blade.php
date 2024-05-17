@@ -31,11 +31,16 @@
                         </div>
                         </div>
                         <div>
-                            <a href="{{route('login')}}">Ingresar</a>
-                            <form method="POST" action="{{route('logout')}}">
-                                @csrf
-                                <button>Cerrar sesión</button>
-                            </form>
+                            @guest
+                                <a href="{{ route('login') }}">Ingresar</a>
+                            @endguest
+
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit">Cerrar sesión</button>
+                                </form>
+                            @endauth
                         </div>
 
                     </div>

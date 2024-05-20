@@ -24,15 +24,18 @@ class RolSeeder extends Seeder
             ]);
         }
 
-        Permission::create(['name' => 'create-users']);
-        Permission::create(['name'=> 'edit-users']);
-        Permission::create(['name' => 'delete-users']);
-        Permission::create(['name' => 'view-users']);
+        Permission::create(['name' => 'create.users']) ->syncRoles($roles);
+        Permission::create(['name'=> 'edit.users'])->assignRole($roles[3], $roles[2]);
+        Permission::create(['name' => 'delete.users'])->assignRole($roles[3], $roles[2]);
+        Permission::create(['name' => 'view.users'])->assignRole($roles[3], $roles[2]);
 
 
-        Permission::create(['name' => 'create-articles']);
-        Permission::create(['name'=> 'edit-articles']);
-        Permission::create(['name' => 'delete-articles']);
-        Permission::create(['name' => 'view-articles']);
+        Permission::create(['name' => 'create.articles'])->assignRole($roles[3], $roles[2], $roles[1]);
+        Permission::create(['name'=> 'edit.articles'])->assignRole($roles[3], $roles[2], $roles[1]);
+        Permission::create(['name' => 'delete.articles'])->assignRole($roles[3], $roles[2], $roles[1]);
+        Permission::create(['name' => 'view.articles'])->syncRoles($roles);
+
+
+
     }
 }

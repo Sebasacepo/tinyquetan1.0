@@ -23,8 +23,11 @@
                                 <a class="nav-link text-white" href="http://127.0.0.1:8000/blogs">Blogs</a>
                             @endif
 
-                            <a class="nav-link text-white" href="http://127.0.0.1:8000/users">Usuarios</a>
-
+                            @auth
+                            @if(Auth::user()->id == 1)
+                                <a class="nav-link text-white" href="http://127.0.0.1:8000/users">Usuarios</a>
+                            @endif
+                            @endauth
 
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/comments">Comentarios</a>
 

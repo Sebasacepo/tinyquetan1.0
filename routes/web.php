@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AuthorizedMiddleware;
 
@@ -24,7 +25,11 @@ include('web/article.php');
 include('web/blog.php');
 include('web/comment.php');
 include('web/roles.php');
+include('web/users.php');
 
 Route::get('/home', function () {
     return view('home/home');
 })->name('welcome');
+
+
+

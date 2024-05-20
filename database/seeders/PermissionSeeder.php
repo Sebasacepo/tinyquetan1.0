@@ -26,6 +26,8 @@ class PermissionSeeder extends Seeder
             ["name"=>"updateContent", "description"=>"Editar Contenidos", "module"=>"Contenidos"],
             ["name"=>"deleContent", "description"=>"Eliminar Contenidos", "module"=>"Contenidos"],
 
+            //
+
         ];
 
         foreach($list as $item){

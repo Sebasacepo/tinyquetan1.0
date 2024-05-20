@@ -30,6 +30,13 @@ class UserRoleSeeder extends Seeder
             $rolePermission->save();
         }
 
+        //Role
+        $rolesPermission = Permission::where('module', '=', 'Roles')->get();
+
+        $rolesPermission = new Role();
+        $rolesPermission->name = "Editor de Roles";
+        $rolesPermission->save();
+
         //Comments role
         $commentsPermission = Permission::where('module', '=', 'Comentarios')->get();
 

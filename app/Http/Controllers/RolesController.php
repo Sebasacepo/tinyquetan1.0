@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\Permission;
+use Illuminate\Support\Facades\DB;
+use App\Models\RolePermission;
 
 class RolesController extends Controller
 {
@@ -22,17 +25,38 @@ class RolesController extends Controller
     }
 
     public function create(){
-        return view('roles.create');
+
+        $modules = Permission::all()
+                              ->groupBy('module');
+        return view('roles.create', ['modules'=>$modules]);
     }
 
     public function edit($id){
 
         $role = Role::find($id);
 
-        if(empty($blog)){
+        if(empty($role)){
             abort(404, "El role con id '$id' no existe");
         }
-        return view('roles.edit', ['role' => $role]);
+
+        $permissions = Permission::all();
+
+        $permissions = $permissions->map(function($item) use($id){
+            $item->selected = false;
+
+            $rolePermission = RolePermission::where('permission_id', '=', $item->id)
+                                            ->where('role_id', '=', $id)
+                                            ->first();
+
+            if(!empty($rolePermission)){
+                $item->selected = true;
+            }
+            return $item;
+        });
+
+        $modules = $permissions->groupBy('module');
+
+        return view('roles.edit', ['role' => $role, 'modules'=>$modules]);
     }
 
     public function delete($id){
@@ -51,10 +75,24 @@ class RolesController extends Controller
 
     public function store(Request $request ){
         try{
-            $role = new Role();
-            $role->name = $request->name;
 
-            $role->save();
+            DB::transaction(function () use ($request){
+                //Creación del rol
+                $role = new Role();
+                $role->name = $request->name;
+                $role->save();
+
+                //Crear la relación y permisos
+                $permissions = json_decode($request->permissions);
+
+                foreach($permissions as $permission){
+
+                    $rolePermission = new RolePermission();
+                    $rolePermission->role_id = $role->id;
+                    $rolePermission->permission_id = $permission;
+                    $rolePermission->save();
+                }
+            });
 
             return redirect()->action([RolesController::class, 'index']);
         }catch(Exception $ex){
@@ -64,16 +102,28 @@ class RolesController extends Controller
 
     public function update(Request $request ){
         try{
-            $role = Role::find($request->role_id);
+            DB::transaction(function() use ($request) {
 
-            if(empty($blog)){
-                abort(404, "El role con id '$request' no existe");
-            }
+                //Edición de rol
+                $role = Role::find($request->role_id);
+                $role->name = $request->name;
+                $role->save();
 
-            $role = new Role();
-            $role->name = $request->name;
+                //Eliminación de permisos viejos
+                RolePermission::where('role_id', '=', $role->id)
+                              ->delete();
 
-            $role->save();
+                //Crear la relación entre roles y permisos
+                $permissions = json_decode($request->permissions);
+
+                foreach($permissions as $permission){
+
+                    $rolePermission = new RolePermission();
+                    $rolePermission->role_id = $role->id;
+                    $rolePermission->permission_id = $permission;
+                    $rolePermission->save();
+                }
+            });
 
             return redirect()->action([RolesController::class, 'index']);
         }catch(Exception $ex){

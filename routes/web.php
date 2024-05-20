@@ -23,6 +23,7 @@ require __DIR__.'/auth.php';
 include('web/article.php');
 include('web/blog.php');
 include('web/comment.php');
+include('web/roles.php');
 
 Route::get('/home', function () {
     return view('home/home');

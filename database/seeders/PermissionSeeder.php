@@ -25,6 +25,11 @@ class PermissionSeeder extends Seeder
             ["name"=>"createContent", "description"=>"Crear Contenidos", "module"=>"Contenidos"],
             ["name"=>"updateContent", "description"=>"Editar Contenidos", "module"=>"Contenidos"],
             ["name"=>"deleContent", "description"=>"Eliminar Contenidos", "module"=>"Contenidos"],
+            //roles
+            ["name"=>"showRoles", "description"=>"Ver Roles", "module"=>"Roles"],
+            ["name"=>"createRoles", "description"=>"Crear Roles", "module"=>"Roles"],
+            ["name"=>"updateRoles", "description"=>"Editar Roles", "module"=>"Roles"],
+            ["name"=>"deleRoles", "description"=>"Eliminar Roles", "module"=>"Roles"],
 
         ];
 

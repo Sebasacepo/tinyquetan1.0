@@ -25,9 +25,11 @@
 
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/users">Usuarios</a>
 
-
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/comments">Comentarios</a>
 
+                            @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Roles.showRoles'))
+                                <a class="nav-link text-white" href="http://127.0.0.1:8000/roles">Roles</a>
+                            @endif
                         </div>
                         </div>
                         <div>

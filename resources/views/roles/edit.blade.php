@@ -13,7 +13,7 @@
         <input type="hidden" id="permissions" name="permissions" />
 
         <div class="col-md-12">
-            <div class="form-floating">
+            <div class="form-label">
                 <label>Nombre</label>
                 <input name="name" class="form-control" placeholder="Nombre..." value="{{$role->name}}" />
             </div>

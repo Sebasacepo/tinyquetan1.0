@@ -1,8 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
 
-<h1>Nuevo Role</h1>
+<h1>Nuevo Rol</h1>
 
     <form action="{{ route('roles.store') }}"  method="POST" id="frmCreate">
         @csrf
@@ -10,12 +9,10 @@
         <input type="hidden" id="permissions" name="permissions" />
 
         <div class="col-md-12">
-            <div class="form-floating">
-                <label>Nombre</label>
+            <div class="form-label">       
                 <input name="name" class="form-control" placeholder="Nombre..." />
             </div>
         </div>
-
     </form>
 
     <div class="card shadow mb-4">

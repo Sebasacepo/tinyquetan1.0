@@ -34,6 +34,12 @@
                 </div>
             </div>
             <div class="mb-3 row">
+                <label for="document" class="col-sm-2 col-form-label">Documento</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="document" id="document" value="{{ old('document') }}" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
                 <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
                 <div class="col-sm-5">
                     <input type="password" class="form-control" name="password" id="password" value="{{ $user->password }}" required>

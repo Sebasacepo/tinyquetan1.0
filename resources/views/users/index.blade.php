@@ -13,6 +13,7 @@
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
+                    <th>Documento</th>
                     <th>Email</th>
                     <th>Rol</th>
                 </tr>
@@ -23,6 +24,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->first_name }}</td>
                         <td>{{ $user->last_name }}</td>
+                        <td>{{ $user->document }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role->name }}</td>
                         <td><a href="{{ url('users/'.$user->id.'/edit' ) }}" class="btn btn-warning btn-sm">Editar</a></td>

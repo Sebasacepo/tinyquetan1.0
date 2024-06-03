@@ -46,6 +46,7 @@ class UserController extends Controller
     $user = new User();
     $user->first_name = $request->input('first_name');
     $user->last_name = $request->input('last_name');
+    $user->document = $request->input('document');
     $user->password = Hash::make($request->input('password'));
     $user->email = $request->input('email');
     $user->role_id = $request->input('role_id');
@@ -88,6 +89,7 @@ class UserController extends Controller
         if ($user) {
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
+            $user->document = $request->input('document');
             $user->password = Hash::make($request->input('password'));
             $user->email = $request->input('email');
             $user->role_id = $request->input('role_id');

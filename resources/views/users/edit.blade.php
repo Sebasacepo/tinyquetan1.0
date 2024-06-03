@@ -24,13 +24,13 @@
             <div class="mb-3 row">
                 <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="name" id=name value="{{ $user->name }}" required>
+                    <input type="text" class="form-control" name="first_name" id=first_name value="{{ $user->first_name }}" required>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="username" class="col-sm-2 col-form-label">Username</label>
+                <label for="username" class="col-sm-2 col-form-label">Apellido</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="username" id="username" value="{{ $user->name }}" required>
+                    <input type="text" class="form-control" name="last_name" id="last_name" value="{{ $user->last_name }}" required>
                 </div>
             </div>
             <div class="mb-3 row">

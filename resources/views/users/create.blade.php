@@ -22,13 +22,13 @@
             <div class="mb-3 row">
                 <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="name" id=name value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" name="first_name" id=first_name value="{{ old('first_name') }}" required>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="username" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="username" id="username" value="{{ old('username') }}" required>
+                    <input type="text" class="form-control" name="last_name" id="last_name" value="{{ old('last_name') }}" required>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -57,12 +57,12 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="rol" class="col-sm-2 col-form-label">Asignar Rol</label>
+                <label for="role_id" class="col-sm-2 col-form-label">Rol</label>
                 <div class="col-sm-5">
-                    <select name="rol" id="rol" class="form-select">
+                    <select name="role_id" id="role_id" class="form-select" required>
                         <option value="">Seleccionar ROL</option>
-                        @foreach ($roles as $rol )
-                        <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                        @foreach ($roles as $rol)
+                            <option value="{{ $rol->id }}">{{ $rol->name }}</option>
                         @endforeach
                     </select>
                 </div>

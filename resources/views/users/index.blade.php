@@ -11,8 +11,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>nombre</th>
-                    <th>UserName</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Email</th>
                     <th>Rol</th>
                 </tr>
@@ -21,10 +21,10 @@
                 @foreach ($usuarios as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->first_name }}</td>
+                        <td>{{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->tipo }}</td>
+                        <td>{{ $user->role->name }}</td>
                         <td><a href="{{ url('users/'.$user->id.'/edit' ) }}" class="btn btn-warning btn-sm">Editar</a></td>
                         <td>
                             <form action="{{ url('users/' .$user->id) }}" method="post">

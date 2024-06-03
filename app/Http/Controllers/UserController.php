@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
+        $usuarios = User::with('role')->get();
         return view('users.index', ['usuarios'=> $usuarios]);
 
     }
@@ -34,27 +34,25 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request -> validate([
-            'name' => 'nullable|max:45',
-            'username' => 'required|max:45',
-            'password' => 'required|confirmed',
-            'email' => 'required|email|confirmed|max:255',
+{
+    $request->validate([
+        'first_name' => 'nullable|max:45',
+        'last_name' => 'required|max:45',
+        'password' => 'required|confirmed',
+        'email' => 'required|email|confirmed|max:255',
+        'role_id' => 'required|exists:roles,id',
+    ]);
 
+    $user = new User();
+    $user->first_name = $request->input('first_name');
+    $user->last_name = $request->input('last_name');
+    $user->password = Hash::make($request->input('password'));
+    $user->email = $request->input('email');
+    $user->role_id = $request->input('role_id');
+    $user->save();
 
-        ]);
-
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->username = $request->input('username');
-        $user->password = Hash::make($request->input('password'));
-        $user->email = $request->input('email');
-        $user->tipo = $request ->input('rol');
-        $user->save();
-
-        return view('users.message', ['msg' => "REGISTRO GUARDADO"]);
-
-    }
+    return redirect()->route('users.index')->with('success', 'Usuario creado exitosamente.');
+}
 
     /**
      * Display the specified resource.
@@ -78,28 +76,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request -> validate([
-            'name' => 'nullable|max:45',
-            'username' => 'required|max:45',
+        $request->validate([
+            'first_name' => 'nullable|max:45',
+            'last_name' => 'required|max:45',
             'password' => 'required|confirmed',
             'email' => 'required|email|confirmed|max:255',
-            'rol' => 'required'
-
+            'role_id' => 'required|exists:roles,id',
         ]);
 
         $user = User::find($id);
         if ($user) {
-            $user->name = $request->input('name');
-            $user->username = $request->input('username');
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
             $user->password = Hash::make($request->input('password'));
             $user->email = $request->input('email');
-            $user->tipo = $request->input('rol');
+            $user->role_id = $request->input('role_id');
             $user->save();
 
-            return view('users.message', ['msg' => "REGISTRO GUARDADO"]);
+            return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
         } else {
-            // Maneja el caso en que el usuario no existe
-            return view('users.message', ['msg' => "USUARIO NO ENCONTRADO"]);
+            return redirect()->route('users.index')->with('error', 'Usuario no encontrado.');
         }
     }
 

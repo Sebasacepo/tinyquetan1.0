@@ -9,7 +9,7 @@
             <header class="bg-dark shadow">
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand text-white" href="http://127.0.0.1:8000/home">TinyQueTan</a>
+                    <img src="https://cdn-icons-png.flaticon.com/512/4893/4893176.png" class="d-block" style="width: 50px;" href="http://127.0.0.1:8000/home">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
@@ -17,6 +17,7 @@
                         <div class="navbar-nav">
 
                             <a class="nav-link active text-white" aria-current="page" href="http://127.0.0.1:8000/home">Inicio</a>
+                            
 
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/articles">Articulo</a>
                             @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Contenidos.showContent'))
@@ -33,18 +34,18 @@
 
                             @if (Auth::check() && \App\Helpers\RoleHelper::isAuthorized('Roles.showRoles'))
                             <a class="nav-link text-white" href="http://127.0.0.1:8000/roles">Roles</a>
-                        @endif
+                            @endif
                         </div>
                         </div>
                         <div>
                             @guest
-                                <a href="{{ route('login') }}">Ingresar</a>
+                                <a href="{{ route('login') }}" class="btn btn-light">Iniciar sesión</a>
                             @endguest
 
                             @auth
                                 <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit">Cerrar sesión</button>
+                                    @csrf                          
+                                    <button type="submit" class="btn btn-light">Cerrar sesión</button>
                                 </form>
                             @endauth
                         </div>

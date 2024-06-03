@@ -37,8 +37,7 @@
     <table class="table table-bordered mt-3">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th></th>
+                <th>Nombre</th>          
             </tr>
         </thead>
 
@@ -91,7 +90,7 @@
             });
 
         });
-
+        
     </script>
 
 @include('layouts.foot')

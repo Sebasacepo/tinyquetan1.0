@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comments;
 use App\Models\Article;
-
+use Illuminate\Support\Facades\Log;
+use Exception;
 class CommentsController extends Controller
 {
     public function index(Request $request)

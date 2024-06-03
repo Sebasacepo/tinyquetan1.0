@@ -8,6 +8,8 @@ use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use App\Models\RolePermission;
+use Illuminate\Support\Facades\Log;
+use Exception;
 
 class RolesController extends Controller
 {

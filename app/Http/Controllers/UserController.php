@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Roles;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function create()
     {
 
-        return view('users.create', ['roles' => Roles::all()]);
+        return view('users.create', ['roles' => Role::all()]);
     }
 
     /**
@@ -70,7 +70,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.edit', ['user' => $user, 'roles' => Roles::all()]);
+        return view('users.edit', ['user' => $user, 'roles' => Role::all()]);
     }
 
     /**

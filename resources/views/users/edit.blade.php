@@ -58,9 +58,9 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="rol" class="col-sm-2 col-form-label">Asignar Rol</label>
+                <label for="role_id" class="col-sm-2 col-form-label">Asignar Rol</label>
                 <div class="col-sm-5">
-                    <select name="rol" id="rol" class="form-select" required>
+                    <select name="role_id" id="role_id" class="form-select" required>
                         <option value="">Seleccionar ROL</option>
                         @foreach ($roles as $rol )
                         <option value="{{ $rol->id }}" @if ($rol ->id == $user->tipo) {{'selected'}}@endif>{{ $rol->name }}</option>

@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="username" class="col-sm-2 col-form-label">Username</label>
+                <label for="username" class="col-sm-2 col-form-label">Apellido</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="last_name" id="last_name" value="{{ old('last_name') }}" required>
                 </div>
